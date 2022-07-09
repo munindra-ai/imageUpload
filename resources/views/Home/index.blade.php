@@ -26,9 +26,9 @@
         <input type="submit" value="Upload">
     </form>
 
-    @if(session('status'))
-    {{--<!-- <h4 style="color: green;">{{session('status')}}</h4> -->--}}
+   {{-- <!-- @if(session('status'))
+   <h4 style="color: green;">{{session('status')}}</h4>
     <img src="{{session('status')}}" height="150" width="150" alt="">
-    @endif
+    @endif -->--}}
 </body>
 </html>

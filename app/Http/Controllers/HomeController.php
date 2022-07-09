@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\student;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class HomeController extends Controller
 {
     public function index()
     {
         return view('Home.index');
+    }
+    public function showImage()
+    {
+        $data = student::all();//all student ko database ma vayeko sabai row pass garcha+student ma vako data array ma pass garcha $data ma
+
+        return view('Home.showImage',compact('data'));//compact ley pass data variable into view
     }
     public function store(Request $request)
     {
@@ -17,7 +25,7 @@ class HomeController extends Controller
             (
             [
                 'std_name' => 'required',
-                'std_image' =>'required|image|mimes: jpg,jpeg,png',
+                'std_image' =>'required|image|mimes: jpg,jpeg,png,PNG',
             ],
             [
             //custom error message shown garna ko lagi 
@@ -35,6 +43,7 @@ class HomeController extends Controller
         }
         $object->save();
         // return redirect()->back()->with('status','Image Uploaded success');
-        return redirect()->back()->with('status',$fileName);
+        // return redirect()->back()->with('status',$fileName);
+        return redirect()->action([HomeController::class,'showImage'])->with('status','Image Uploaded success');
     }
 }

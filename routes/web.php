@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', [HomeController::class,'index']);
 Route::post('upload', [HomeController::class,'store']);
+Route::get('showImage', [HomeController::class,'showImage']);
